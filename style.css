@@ -1,0 +1,1386 @@
+body {
+    margin: 0;
+
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #fbfafe;
+
+    font-family: Arial, sans-serif;
+}
+
+
+#game {
+    width: 800px;
+    height: 550px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background-image: url("images/livingroom.png");
+    background-size: cover;
+    background-position: center;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+#roomName {
+    position: absolute;
+
+    top: 20px;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #5b4eb3;
+
+    font-size: 32px;
+
+    font-family: "Fredoka", sans-serif;
+
+    z-index: 10;
+}
+
+
+#gameArea {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+}
+
+
+#character {
+    width: 180px;
+
+    position: absolute;
+
+    left: 550px;
+    top: 152px;
+
+    z-index: 5;
+
+    cursor: pointer;
+
+    transition: transform 0.1s;
+}
+
+
+#character:hover {
+    transform: scale(1.1);
+}
+
+
+#character:active {
+    transform: scale(0.9);
+}
+
+
+#message {
+    position: absolute;
+
+    bottom: 100px;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #5b4eb3;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    z-index: 10;
+}
+
+
+.stat {
+    color: white;
+
+    font-weight: bold;
+
+    position: absolute;
+
+    bottom: 10px;
+
+    left: 20px;
+
+    width: 180px;
+
+    z-index: 20;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    padding: 10px;
+
+    border-radius: 12px;
+
+    box-sizing: border-box;
+}
+
+
+.bar {
+    width: 100%;
+
+    height: 15px;
+
+    margin-top: 5px;
+
+    background: rgba(255, 255, 255, 0.4);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+#happiness {
+    width: 80%;
+
+    height: 100%;
+
+    background: pink;
+
+    transition: width 0.3s;
+}
+
+/* =========================
+   LOADING SCREEN
+   ========================= */
+
+#loadingScreen {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+   background-image: url("images/loadingscreen.jpg");
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+
+    color: #4a3828;
+
+    z-index: 1000;
+
+    opacity: 1;
+
+    transition: opacity 1s ease;
+}
+
+
+#loadingScreen.fadeOut {
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+#loadingContent {
+    width: 500px;
+
+    text-align: center;
+}
+
+
+#gameTitle {
+    margin: 0 0 20px 0;
+
+    font-size: 60px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+
+/* Pikmin */
+
+#loadingPikmin {
+    height: 240px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+#loadingPikmin img {
+    width: 180px;
+
+    user-select: none;
+
+    animation: pikminBounce 1.2s ease-in-out infinite;
+}
+
+
+@keyframes pikminBounce {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-18px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Loading text */
+
+#loadingText {
+    margin: 15px 0 8px;
+
+    font-size: 18px;
+}
+
+
+/* Loading bar */
+
+#loadingBar {
+    width: 100%;
+
+    height: 20px;
+
+    background: rgba(74, 56, 40, 0.18);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+#loadingProgress {
+    width: 0%;
+
+    height: 100%;
+
+    background: #ffc6cb;
+
+    border-radius: 20px;
+
+    transition: width 0.1s linear;
+}
+
+
+/* Percentage */
+
+#loadingPercent {
+    margin: 8px 0 20px;
+
+    font-size: 16px;
+
+    font-weight: bold;
+}
+
+
+/* Tips */
+
+#loadingTip {
+    font-size: 15px;
+
+    opacity: 0.7;
+
+    font-style: italic;
+}
+/* =========================
+   TITLE SCREEN
+   ========================= */
+
+#titleScreen {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #987fa7;
+
+    color: #4a3828;
+
+    z-index: 900;
+
+    opacity: 1;
+
+    transition: opacity 0.8s ease;
+}
+
+
+#titleScreen.fadeOut {
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+#titleContent {
+    text-align: center;
+
+    width: 90%;
+    max-width: 500px;
+
+    box-sizing: border-box;
+}
+
+
+#title {
+    font-size: clamp(32px, 8vw, 48px);
+
+    margin: 0 0 30px 0;
+
+    letter-spacing: 2px;
+
+    line-height: 1.1;
+
+    overflow-wrap: break-word;
+}
+
+
+#titlePikmin {
+    margin-bottom: 35px;
+}
+
+
+#titlePikmin img {
+    width: 180px;
+
+    animation: titlePikminBounce 1.5s ease-in-out infinite;
+}
+
+
+@keyframes titlePikminBounce {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+
+#startButton {
+    padding: 15px 45px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #ffc6cb;
+
+    color: #ffffff;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 0 #e9b0b4;
+
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+
+#startButton:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 0 #e9b0b4;
+}
+
+
+#startButton:active {
+    transform: translateY(4px);
+
+    box-shadow: 0 2px 0 #e9b0b4;
+}
+#startHint {
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    opacity: 0.6;
+}
+
+/* =========================
+   HEARTS
+   ========================= */
+
+.heart {
+    position: absolute;
+
+    color: #ff8fab;
+
+    font-size: 28px;
+
+    pointer-events: none;
+
+    animation: heartFloat 1s ease-out forwards;
+
+    z-index: 20;
+}
+
+
+@keyframes heartFloat {
+
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-70px) scale(1.4);
+    }
+
+}
+.stat {
+    background: rgba(0, 0, 0, 0.35);
+
+    padding: 10px;
+
+    border-radius: 12px;
+
+    box-sizing: border-box;
+}
+
+
+.statTitle {
+    margin-bottom: 5px;
+
+    font-size: 15px;
+
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+#floor {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 35%;
+
+    background-image: url("images/livingroomfloor.png");
+
+    background-size: cover;
+    background-position: center;
+
+    z-index: 1;
+}
+#floorTrim {
+    position: absolute;
+
+    left: 0;
+
+    bottom: 35%;
+
+    width: 100%;
+
+    height: 12px;
+
+    background: #f2ebeb;
+
+    z-index: 2;
+}
+
+#couch {
+    position: absolute;
+
+    width: 350px;
+
+    left: 20px;
+    top: 180px;
+
+    z-index: 3;
+
+    user-select: none;
+    pointer-events: none;
+}
+
+#nextRoom {
+    position: absolute;
+
+    right: 20px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 55px;
+    height: 70px;
+
+    border: none;
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.7);
+
+    color: #5b4eb3;
+
+    font-size: 45px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    z-index: 50;
+
+    transition: transform 0.2s, background 0.2s;
+}
+
+#nextRoom:hover {
+    transform: translateY(-50%) scale(1.1);
+
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* =========================
+   BATHROOM
+   ========================= */
+
+#bathroom {
+    display: none;
+
+    width: 800px;
+    height: 550px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background-image: url("images/bathroom.png");
+    background-size: cover;
+    background-position: center;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+#bathroomName {
+    position: absolute;
+
+    top: 20px;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #5b4eb3;
+
+    font-family: "Fredoka", sans-serif;
+
+    font-size: 32px;
+
+    z-index: 10;
+}
+
+
+#bathroomArea {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+}
+
+
+#bathroomPikmin {
+    position: absolute;
+
+    width: 180px;
+
+    left: 400px;
+    top: 150px;
+
+    z-index: 5;
+}
+
+/* =========================
+   BATHROOM FLOOR
+   ========================= */
+
+#bathroomArea::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 35%;
+
+    background-image: url("images/bathroomfloor.png");
+
+    background-size: cover;
+    background-position: center;
+
+    z-index: 1;
+}
+
+
+/* Bathroom floor trim */
+
+#bathroomArea::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 35%;
+
+    width: 100%;
+    height: 12px;
+
+    background: #ffc0cb;
+
+    z-index: 2;
+}
+
+
+/* Keep Pikmin above the floor */
+
+#bathroomPikmin {
+    z-index: 5;
+}
+
+/* =========================
+   CLEANLINESS STAT
+   ========================= */
+
+#cleanlinessStat {
+    position: absolute;
+
+    bottom: 10px;
+    left: 20px;
+
+    width: 180px;
+
+    z-index: 30;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    padding: 10px;
+
+    border-radius: 12px;
+
+    box-sizing: border-box;
+
+    color: white;
+
+    font-weight: bold;
+}
+
+
+#cleanliness {
+    width: 40%;
+
+    height: 100%;
+
+    background: #9bd7ff;
+
+    transition: width 0.3s;
+}
+
+/* =========================
+   FOAMY CLEANING BUBBLES
+   ========================= */
+
+.bubble {
+    position: absolute;
+
+    width: 22px;
+    height: 22px;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    border: 3px solid rgba(255, 255, 255, 0.95);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 6px rgba(255, 255, 255, 0.8),
+        inset 3px 3px 5px rgba(255, 255, 255, 0.9);
+
+    pointer-events: none;
+
+    z-index: 20;
+
+    animation: bubbleFloat 1s ease-out forwards;
+}
+
+
+@keyframes bubbleFloat {
+
+    0% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(0.6);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            translateY(-25px)
+            scale(1);
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translateY(-65px)
+            scale(1.2);
+    }
+}
+
+/* =========================
+   BATHROOM SPONGE
+   ========================= */
+
+#sponge {
+    position: absolute;
+
+    width: 90px;
+
+    left: 80px;
+    top: 300px;
+
+    z-index: 10;
+
+    user-select: none;
+}
+
+/* =========================
+   PREVIOUS ROOM ARROW
+   ========================= */
+
+#previousRoom {
+    position: absolute;
+
+    left: 20px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 55px;
+    height: 55px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    color: #5b4eb3;
+
+    font-size: 35px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    z-index: 50;
+}
+
+#previousRoom:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* =========================
+   BATHROOM SHOWER
+   ========================= */
+
+#shower {
+    position: absolute;
+
+    width: 400px;
+
+    left: 450px;
+    top: 40px;
+
+    z-index: 5;
+
+    user-select: none;
+
+    pointer-events: none;
+}
+
+/* =========================
+   BATHROOM SINK
+   ========================= */
+
+#sink {
+    position: absolute;
+
+    width: 170px;
+
+    left: 0px;
+    top: 250px;
+
+    z-index: 3;
+
+    user-select: none;
+
+    pointer-events: none;
+}
+
+/* =========================
+   BEDROOM
+   ========================= */
+
+#bedroom {
+    display: none;
+
+    width: 800px;
+    height: 550px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================
+   BEDROOM NAME
+   ========================= */
+
+#bedroomName {
+    position: absolute;
+
+    top: 20px;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #5b4eb3;
+
+    font-family: "Fredoka", sans-serif;
+
+    font-size: 32px;
+
+    z-index: 30;
+}
+
+
+/* =========================
+   BEDROOM AREA
+   ========================= */
+
+#bedroomArea {
+    width: 100%;
+    height: 100%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background-image: url("images/bedroom.png");
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* =========================
+   BEDROOM FLOOR
+   ========================= */
+
+#bedroomFloor {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 35%;
+
+    background-image: url("images/bedroomfloor.png");
+
+    background-size: cover;
+    background-position: center;
+
+    z-index: 1;
+}
+
+
+/* =========================
+   BEDROOM FLOOR TRIM
+   ========================= */
+
+#bedroomFloorTrim {
+    position: absolute;
+
+    left: 0;
+    bottom: 35%;
+
+    width: 100%;
+    height: 12px;
+
+    background: #8b6f5a;
+
+    z-index: 2;
+}
+
+
+/* =========================
+   BEDROOM PIKMIN
+   ========================= */
+
+#bedroomPikmin {
+    position: absolute;
+
+    width: 180px;
+
+    left: 400px;
+    top: 150px;
+
+    z-index: 5;
+
+    user-select: none;
+}
+
+
+/* =========================
+   BEDROOM BACK ARROW
+   ========================= */
+
+#bedroom #previousBedroom {
+    position: absolute;
+
+    left: 20px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 55px;
+    height: 55px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    color: #5b4eb3;
+
+    font-size: 35px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    z-index: 50;
+}
+
+
+#bedroom #previousBedroom:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+
+/* =========================
+   BEDROOM NEXT ARROW
+   ========================= */
+
+#nextBedroom {
+    position: absolute;
+
+    right: 20px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 55px;
+    height: 55px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    color: #5b4eb3;
+
+    font-size: 35px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    z-index: 50;
+
+    transition: transform 0.2s, background 0.2s;
+}
+
+
+#nextBedroom:hover {
+    transform: translateY(-50%) scale(1.1);
+
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* =========================
+   BEDROOM BED
+   ========================= */
+
+#bed {
+    position: absolute;
+
+    width: 500px;
+
+    left: 150px;
+    top: 300px;
+
+    z-index: 4;
+
+    user-select: none;
+
+    cursor: pointer;
+}
+
+/* =========================
+   SLEEP MESSAGE
+   ========================= */
+
+#sleepMessage {
+    position: absolute;
+
+    left: 50%;
+    bottom: 100px;
+
+    transform: translateX(-50%);
+
+    padding: 12px 20px;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    color: #5b4eb3;
+
+    border-radius: 15px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    z-index: 40;
+
+    display: none;
+}
+
+/* =========================
+   SLEEPING PIKMIN
+   ========================= */
+
+#sleepingPikmin {
+    display: none;
+
+    position: absolute;
+
+    width: 220px;
+
+    left: 330px;
+    top: 300px;
+
+    z-index: 11;
+
+    user-select: none;
+}
+
+/* =========================
+   SLEEP OVERLAY
+   ========================= */
+
+#sleepOverlay {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(20, 15, 45, 0.75);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 60;
+
+    transition: opacity 2s ease;
+}
+
+
+#sleepOverlay.sleeping {
+    opacity: 1;
+}
+
+/* =========================
+   SLEEP ZZZ
+   ========================= */
+
+#sleepZzz {
+    position: absolute;
+
+    left: 50%;
+    top: 35%;
+
+    transform: translateX(-50%);
+
+    color: white;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    z-index: 70;
+
+    display: none;
+
+    animation: zzzFloat 2s ease-in-out infinite;
+}
+
+
+@keyframes zzzFloat {
+
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 10px);
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -35px);
+    }
+
+}
+
+/* =========================
+   TIREDNESS STAT
+   ========================= */
+
+#tirednessStat {
+    position: absolute;
+
+    bottom: 10px;
+    left: 20px;
+
+    width: 180px;
+
+    z-index: 50;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    padding: 10px;
+
+    border-radius: 12px;
+
+    box-sizing: border-box;
+
+    color: white;
+
+    font-weight: bold;
+}
+
+#tiredness {
+    width: 30%;
+
+    height: 100%;
+
+    background: #9b8cff;
+
+    transition: width 0.3s;
+}
+
+/* =========================
+   CARD
+   ========================= */
+
+#note {
+    position: absolute;
+
+    width: 90px;
+
+    left: 250px;
+    bottom: 45px;
+
+    z-index: 11;
+
+    cursor: pointer;
+
+    transition: transform 0.3s ease;
+}
+
+#note:hover {
+    transform: scale(1.1);
+}
+
+/* =========================
+   LETTER POPUP
+   ========================= */
+
+#letterPopup {
+    display: none;
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    z-index: 200;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+
+#letter {
+    position: relative;
+
+    width: 500px;
+
+    max-width: 80%;
+
+    max-height: 85%;
+}
+
+
+#letter img {
+    display: block;
+
+    width: 120%;
+
+    height: auto;
+}
+#letterText {
+    position: absolute;
+
+    top: 23%;
+    left: 28%;
+    width: 68%;
+    height: 50%;
+
+    overflow-y: auto;
+
+    padding: 5px 15px 5px 5px;
+
+    box-sizing: border-box;
+
+    font-family: "Fredoka", sans-serif;
+    font-size: 18px;
+    line-height: 1.55;
+
+    color: #5b4b55;
+
+    text-align: left;
+}
+
+
+/* =========================
+   CUTE LETTER SCROLLBAR
+   ========================= */
+
+#letterText::-webkit-scrollbar {
+    width: 10px;
+}
+
+#letterText::-webkit-scrollbar-track {
+    background: rgba(255, 192, 203, 0.25);
+
+    border-radius: 20px;
+}
+
+#letterText::-webkit-scrollbar-thumb {
+    background: #ffb6c9;
+
+    border-radius: 20px;
+
+    border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+#letterText::-webkit-scrollbar-thumb:hover {
+    background: #ff91b0;
+}
+
+
+#closeLetter {
+    position: absolute;
+
+    right: 10px;
+    top: 10px;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    color: #5b4eb3;
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+
+#closeLetter:hover {
+    transform: scale(1.1);
+}
+

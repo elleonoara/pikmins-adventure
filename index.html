@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My First Game</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- =========================
+     LOADING SCREEN
+     ========================= -->
+
+<div id="loadingScreen">
+
+```
+<div id="loadingContent">
+
+    <h1 id="gameTitle">
+        Pikmin's Adventure
+    </h1>
+
+    <div id="loadingPikmin">
+
+        <img src="images/loadingpikmin.png" alt="Pikmin">
+
+    </div>
+
+    <p id="loadingText">
+        Loading...
+    </p>
+
+    <div id="loadingBar">
+
+        <div id="loadingProgress"></div>
+
+    </div>
+
+    <p id="loadingPercent">
+        0%
+    </p>
+
+    <p id="loadingTip">
+        Tip: Keep an eye out for the special note!
+    </p>
+
+</div>
+```
+
+</div>
+
+<!-- =========================
+     MAIN GAME
+     ========================= -->
+
+<div id="game">
+
+    <h1 id="roomName">Living room</h1>
+
+    <div id="gameArea">
+
+        <div id="floor"></div>
+
+        <div id="floorTrim"></div>
+
+        <img id="couch" src="images/couch.png" alt="Couch">
+
+        <img id="character" src="images/pikmin.png">
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <div class="statTitle">
+                ♥ Happiness
+            </div>
+
+            <div class="bar">
+
+                <div id="happiness"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <button id="nextRoom">></button>
+
+</div>
+
+<!-- =========================
+     BATHROOM
+     ========================= -->
+
+
+<div id="bathroom">
+
+    <h1 id="bathroomName">Bathroom</h1>
+
+    <div id="bathroomArea">
+
+        <img
+            id="shower"
+            src="images/shower.png"
+            alt="Shower"
+        >
+
+        <img
+            id="sponge"
+            src="images/sponge.png"
+            alt="Sponge"
+        >
+
+        <img
+            id="bathroomPikmin"
+            src="images/pikmin.png"
+            alt="Pikmin"
+        >
+        <img 
+            id="sink"
+            src="images/sink.png"
+            alt="Sink"
+       >
+   
+    </div>
+
+    <div id="cleanlinessStat">
+
+        <div class="statTitle">
+            🫧 Cleanliness
+        </div>
+
+        <div class="bar">
+
+            <div id="cleanliness"></div>
+
+        </div>
+
+    </div>
+
+        <button id="previousRoom"><</button>
+
+    <button id="nextBedroom">></button>
+
+</div>
+
+<!-- =========================
+     BEDROOM
+     ========================= -->
+
+<div id="bedroom">
+
+    <h1 id="bedroomName">Bedroom</h1>
+
+<div id="bedroomArea">
+
+    <div id="tirednessStat">
+
+    <div class="statTitle">
+        Zz Tiredness
+    </div>
+
+    <div class="bar">
+        <div id="tiredness"></div>
+    </div>
+
+</div>
+    
+    <div id="bedroomFloor"></div>
+
+    <div id="bedroomFloorTrim"></div>
+
+    <img
+        id="bed"
+        src="images/bed.png"
+        alt="Bed"
+    >
+
+   <img
+       id="note"
+       src="images/note.png"
+       alt="note"
+>
+
+    <img
+        id="bedroomPikmin"
+        src="images/pikmin.png"
+        alt="Pikmin"
+    >
+
+    <img
+    id="sleepingPikmin"
+    src="images/sleepingpikmin.png"
+    alt="Sleeping Pikmin"
+>
+    <div id="sleepMessage">
+    Pikmin is getting sleepy...
+</div>
+
+<div id="sleepZzz">
+    Zzz...
+</div>
+
+<div id="sleepOverlay"></div>
+    
+</div>
+
+<button id="previousBedroom"><</button>
+
+</div>
+
+<!-- =========================
+     LETTER POPUP
+     ========================= -->
+
+<div id="letterPopup">
+
+    <div id="letter">
+
+        <img
+            src="images/letter.png"
+            alt="Letter"
+        >
+
+        <div id="letterText">
+           My love, happy anniversary!! <33 <br><br>
+
+I wanna thank you for always being there for me, through both the good and the bad and thank you for always making me feel so loved, cared for, and appreciated. Im so grateful to have you by my side, and i look forward to spending many more amazing years together.<br><br>
+
+I promise to always be by your side, even when things are hard. I promise to keep loving you, supporting you, and being the shoulder you can cry on. No matter what happens, ill always be here for you baby, I promise.<br><br>
+
+I love you so so much forever and ever. Happy anniversary baby mwahh!! >ω<
+
+        </div>
+
+        <button id="closeLetter">×</button>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     TITLE SCREEN
+     ========================= -->
+
+<div id="titleScreen">
+
+```
+<div id="titleContent">
+
+    <h1 id="title">
+        Pikmin's Adventure
+    </h1>
+
+
+    <div id="titlePikmin">
+
+        <img
+            src="images/pikmin.png"
+            alt="Pikmin"
+        >
+
+    </div>
+
+
+    <button id="startButton">
+        START GAME
+    </button>
+
+</div>
+```
+
+</div>
+
+<script src="game.js"></script>
+
+</body>
+
+</html>
